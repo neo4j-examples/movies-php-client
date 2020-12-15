@@ -1,0 +1,8 @@
+target
+*.iml
+*.class
+*.jar
+*.pyc
+.idea
+/node_modules
+/vendor
