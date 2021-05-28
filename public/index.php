@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Laudis\Neo4j\Authentication\Authenticate;
 use Laudis\Neo4j\ClientBuilder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,13 +11,15 @@ use Slim\Factory\AppFactory;
 require __DIR__ . '/../vendor/autoload.php';
 
 $user = getenv('NEO4J_USER');
-$user = $user === false ? 'neo4j' : $user;
+$user = $user === false ? '' : $user;
 
 $password = getenv('NEO4J_PASSWORD');
-$password = $password === false ? 'abcde' : $password;
+$password = $password === false ? '' : $password;
 
+$url = sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, getenv('NEO4J_DATABASE'));
+$auth = $user === '' ? Authenticate::disabled() : Authenticate::fromUrl();
 $client = ClientBuilder::create()
-    ->withDriver('default', sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, getenv('NEO4J_DATABASE')))
+    ->withDriver('default', $url, $auth)
     ->build();
 
 $app = AppFactory::create();
