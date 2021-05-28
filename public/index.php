@@ -16,7 +16,10 @@ $user = $user === false ? '' : $user;
 $password = getenv('NEO4J_PASSWORD');
 $password = $password === false ? '' : $password;
 
-$url = sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, getenv('NEO4J_DATABASE'));
+$database = getenv('NEO4J_DATABASE');
+$database = $database === false ? 'neo4j' : $database;
+
+$url = sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, $database);
 $auth = $user === '' ? Authenticate::disabled() : Authenticate::fromUrl();
 $client = ClientBuilder::create()
     ->withDriver('default', $url, $auth)
