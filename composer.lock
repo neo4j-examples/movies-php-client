@@ -4,19 +4,19 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8a9d946f96fa4bf422ed5d2fa809773",
+    "content-hash": "4156f8f68031f86f0dc788dcaf379a9a",
     "packages": [
         {
             "name": "clue/stream-filter",
             "version": "v1.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-stream-filter.git",
+                "url": "https://github.com/clue/stream-filter.git",
                 "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
+                "url": "https://api.github.com/repos/clue/stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
                 "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
                 "shasum": ""
             },
@@ -57,8 +57,8 @@
                 "stream_filter_register"
             ],
             "support": {
-                "issues": "https://github.com/clue/php-stream-filter/issues",
-                "source": "https://github.com/clue/php-stream-filter/tree/v1.5.0"
+                "issues": "https://github.com/clue/stream-filter/issues",
+                "source": "https://github.com/clue/stream-filter/tree/v1.5.0"
             },
             "funding": [
                 {
@@ -74,19 +74,20 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "1.0.0",
+            "version": "v2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/transistive/neo4j-php-client.git",
-                "reference": "51eae6ac6e11722e01ee603d72ab0875242e3e70"
+                "url": "https://github.com/neo4j-php/neo4j-php-client.git",
+                "reference": "80018fba45e836806d7d882eeafc100a8a764151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/transistive/neo4j-php-client/zipball/51eae6ac6e11722e01ee603d72ab0875242e3e70",
-                "reference": "51eae6ac6e11722e01ee603d72ab0875242e3e70",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/80018fba45e836806d7d882eeafc100a8a764151",
+                "reference": "80018fba45e836806d7d882eeafc100a8a764151",
                 "shasum": ""
             },
             "require": {
+                "laudis/typed-enum": "^1.1",
                 "php": "^7.4 || ^8.0",
                 "php-ds/php-ds": "1.*",
                 "php-http/discovery": "^1.13",
@@ -95,14 +96,16 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "stefanak-michal/bolt": "^2.0",
-                "youngsource/typed-enum": "^1.1"
+                "stefanak-michal/bolt": "^2.2"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "7.*",
-                "guzzlehttp/psr7": "1.*",
-                "http-interop/http-factory-guzzle": "*",
-                "phpunit/phpunit": "^9.0"
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "kriswallsmith/buzz": "^1.2",
+                "nyholm/psr7": "^1.3",
+                "nyholm/psr7-server": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "psalm/plugin-phpunit": "^0.15.1",
+                "vimeo/psalm": "^4.7"
             },
             "suggest": {
                 "ext-bcmath": "Needed to implement bolt protocol",
@@ -138,10 +141,56 @@
                 "neo4j"
             ],
             "support": {
-                "issues": "https://github.com/transistive/neo4j-php-client/issues",
-                "source": "https://github.com/transistive/neo4j-php-client/tree/1.0.0"
+                "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/v2.0"
             },
-            "time": "2020-12-07T17:54:46+00:00"
+            "time": "2021-05-28T11:58:08+00:00"
+        },
+        {
+            "name": "laudis/typed-enum",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/transistive/typed-enum.git",
+                "reference": "3f3ce0d9f4dbcd61d065858cad70c2ab788815dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/transistive/typed-enum/zipball/3f3ce0d9f4dbcd61d065858cad70c2ab788815dd",
+                "reference": "3f3ce0d9f4dbcd61d065858cad70c2ab788815dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpbench/phpbench": "^0.17.1",
+                "phpunit/phpunit": "9.*",
+                "vimeo/psalm": "^3.16"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laudis\\TypedEnum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ghlen Nagels",
+                    "email": "ghlen@pm.me"
+                }
+            ],
+            "description": "A small class allowing for typed enumerations.",
+            "support": {
+                "issues": "https://github.com/transistive/typed-enum/issues",
+                "source": "https://github.com/transistive/typed-enum/tree/v1.1.1"
+            },
+            "time": "2020-09-24T10:22:46+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -195,16 +244,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.3.2",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "a272953743c454ac4af9626634daaf5ab3ce1173"
+                "reference": "23ae1f00fbc6a886cbe3062ca682391b9cc7c37b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/a272953743c454ac4af9626634daaf5ab3ce1173",
-                "reference": "a272953743c454ac4af9626634daaf5ab3ce1173",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/23ae1f00fbc6a886cbe3062ca682391b9cc7c37b",
+                "reference": "23ae1f00fbc6a886cbe3062ca682391b9cc7c37b",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +275,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -256,7 +305,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Nyholm/psr7/issues",
-                "source": "https://github.com/Nyholm/psr7/tree/1.3.2"
+                "source": "https://github.com/Nyholm/psr7/tree/1.4.0"
             },
             "funding": [
                 {
@@ -268,20 +317,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-14T17:35:34+00:00"
+            "time": "2021-02-18T15:41:32+00:00"
         },
         {
             "name": "nyholm/psr7-server",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7-server.git",
-                "reference": "5c134aeb5dd6521c7978798663470dabf0528c96"
+                "reference": "b846a689844cef114e8079d8c80f0afd96745ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/5c134aeb5dd6521c7978798663470dabf0528c96",
-                "reference": "5c134aeb5dd6521c7978798663470dabf0528c96",
+                "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/b846a689844cef114e8079d8c80f0afd96745ae3",
+                "reference": "b846a689844cef114e8079d8c80f0afd96745ae3",
                 "shasum": ""
             },
             "require": {
@@ -322,7 +371,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Nyholm/psr7-server/issues",
-                "source": "https://github.com/Nyholm/psr7-server/tree/1.0.1"
+                "source": "https://github.com/Nyholm/psr7-server/tree/1.0.2"
             },
             "funding": [
                 {
@@ -334,7 +383,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-15T15:26:20+00:00"
+            "time": "2021-05-12T11:11:27+00:00"
         },
         {
             "name": "php-ds/php-ds",
@@ -462,16 +511,16 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.10.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "39db36d5972e9e6d00ea852b650953f928d8f10d"
+                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/39db36d5972e9e6d00ea852b650953f928d8f10d",
-                "reference": "39db36d5972e9e6d00ea852b650953f928d8f10d",
+                "url": "https://api.github.com/repos/php-http/message/zipball/887734d9c515ad9a564f6581a682fff87a6253cc",
+                "reference": "887734d9c515ad9a564f6581a682fff87a6253cc",
                 "shasum": ""
             },
             "require": {
@@ -487,15 +536,15 @@
                 "ergebnis/composer-normalize": "^2.6",
                 "ext-zlib": "*",
                 "guzzlehttp/psr7": "^1.0",
+                "laminas/laminas-diactoros": "^2.0",
                 "phpspec/phpspec": "^5.1 || ^6.3",
-                "slim/slim": "^3.0",
-                "zendframework/zend-diactoros": "^1.0"
+                "slim/slim": "^3.0"
             },
             "suggest": {
                 "ext-zlib": "Used with compressor/decompressor streams",
                 "guzzlehttp/psr7": "Used with Guzzle PSR-7 Factories",
-                "slim/slim": "Used with Slim Framework PSR-7 implementation",
-                "zendframework/zend-diactoros": "Used with Diactoros Factories"
+                "laminas/laminas-diactoros": "Used with Diactoros Factories",
+                "slim/slim": "Used with Slim Framework PSR-7 implementation"
             },
             "type": "library",
             "extra": {
@@ -530,9 +579,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/message/issues",
-                "source": "https://github.com/php-http/message/tree/1.10.0"
+                "source": "https://github.com/php-http/message/tree/1.11.1"
             },
-            "time": "2020-11-11T10:19:56+00:00"
+            "time": "2021-05-24T18:11:08+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -590,25 +639,25 @@
         },
         {
             "name": "psr/container",
-            "version": "1.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+                "reference": "2ae37329ee82f91efadc282cc2d527fd6065a5ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/2ae37329ee82f91efadc282cc2d527fd6065a5ef",
+                "reference": "2ae37329ee82f91efadc282cc2d527fd6065a5ef",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=7.2.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -623,7 +672,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common Container Interface (PHP FIG PSR-11)",
@@ -637,9 +686,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/container/issues",
-                "source": "https://github.com/php-fig/container/tree/master"
+                "source": "https://github.com/php-fig/container/tree/2.0.1"
             },
-            "time": "2017-02-14T16:28:37+00:00"
+            "time": "2021-03-24T13:40:57+00:00"
         },
         {
             "name": "psr/http-client",
@@ -917,16 +966,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -950,7 +999,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -961,29 +1010,29 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.3"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "slim/slim",
-            "version": "4.7.1",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim.git",
-                "reference": "0905e0775f8c1cfb3bbcfabeb6588dcfd8b82d3f"
+                "reference": "c9bdc9e0d2f8613055632334ec6711b965d5fdf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/0905e0775f8c1cfb3bbcfabeb6588dcfd8b82d3f",
-                "reference": "0905e0775f8c1cfb3bbcfabeb6588dcfd8b82d3f",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/c9bdc9e0d2f8613055632334ec6711b965d5fdf3",
+                "reference": "c9bdc9e0d2f8613055632334ec6711b965d5fdf3",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "nikic/fast-route": "^1.3",
                 "php": "^7.2 || ^8.0",
-                "psr/container": "^1.0",
+                "psr/container": "^1.0 || ^2.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
                 "psr/http-server-handler": "^1.0",
@@ -993,17 +1042,17 @@
             "require-dev": {
                 "adriansuter/php-autoload-override": "^1.2",
                 "ext-simplexml": "*",
-                "guzzlehttp/psr7": "^1.7",
+                "guzzlehttp/psr7": "^1.8",
                 "http-interop/http-factory-guzzle": "^1.0",
                 "laminas/laminas-diactoros": "^2.4",
-                "nyholm/psr7": "^1.3",
+                "nyholm/psr7": "^1.4",
                 "nyholm/psr7-server": "^1.0.1",
-                "phpspec/prophecy": "^1.12",
-                "phpstan/phpstan": "^0.12.58",
-                "phpunit/phpunit": "^8.5.13",
+                "phpspec/prophecy": "^1.13",
+                "phpstan/phpstan": "^0.12.85",
+                "phpunit/phpunit": "^8.5.13 || ^9.3.8",
                 "slim/http": "^1.2",
                 "slim/psr7": "^1.3",
-                "squizlabs/php_codesniffer": "^3.5",
+                "squizlabs/php_codesniffer": "^3.6",
                 "weirdan/prophecy-shim": "^1.0 || ^2.0.2"
             },
             "suggest": {
@@ -1077,20 +1126,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-01T19:41:22+00:00"
+            "time": "2021-04-29T03:43:44+00:00"
         },
         {
             "name": "stefanak-michal/bolt",
-            "version": "v2.0",
+            "version": "v2.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/stefanak-michal/Bolt.git",
-                "reference": "6a6cad25bb9c8b6112c9db68e0c51e6390df123b"
+                "url": "https://github.com/neo4j-php/Bolt.git",
+                "reference": "3aa1ea44338dcff7fcf3c6138a1d143920eb93c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanak-michal/Bolt/zipball/6a6cad25bb9c8b6112c9db68e0c51e6390df123b",
-                "reference": "6a6cad25bb9c8b6112c9db68e0c51e6390df123b",
+                "url": "https://api.github.com/repos/neo4j-php/Bolt/zipball/3aa1ea44338dcff7fcf3c6138a1d143920eb93c3",
+                "reference": "3aa1ea44338dcff7fcf3c6138a1d143920eb93c3",
                 "shasum": ""
             },
             "require": {
@@ -1119,7 +1168,7 @@
                 }
             ],
             "description": "Bolt protocol library over TCP socket",
-            "homepage": "https://github.com/stefanak-michal/Bolt",
+            "homepage": "https://github.com/neo4j-php/Bolt",
             "keywords": [
                 "Socket",
                 "bolt",
@@ -1127,8 +1176,8 @@
                 "neo4j"
             ],
             "support": {
-                "issues": "https://github.com/stefanak-michal/Bolt/issues",
-                "source": "https://github.com/stefanak-michal/Bolt"
+                "issues": "https://github.com/neo4j-php/Bolt/issues",
+                "source": "https://github.com/neo4j-php/Bolt"
             },
             "funding": [
                 {
@@ -1136,64 +1185,20 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2020-12-03T10:35:44+00:00"
-        },
-        {
-            "name": "youngsource/typed-enum",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laudis-technologies/typed-enum.git",
-                "reference": "c752ae1c85ada25a4b2e9670a104305ef1c0b96c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laudis-technologies/typed-enum/zipball/c752ae1c85ada25a4b2e9670a104305ef1c0b96c",
-                "reference": "c752ae1c85ada25a4b2e9670a104305ef1c0b96c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "php-ds/php-ds": "^1.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "9.*"
-            },
-            "suggest": {
-                "ext-ds": "Needed for optimal performance"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laudis\\TypedEnum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ghlen Nagels",
-                    "email": "ghlen@pm.me"
-                }
-            ],
-            "description": "A small class allowing for typed enumerations.",
-            "support": {
-                "issues": "https://github.com/laudis-technologies/typed-enum/issues",
-                "source": "https://github.com/laudis-technologies/typed-enum/tree/v1.3.0"
-            },
-            "time": "2020-12-12T15:06:27+00:00"
+            "time": "2021-05-06T08:05:53+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "laudis/neo4j-php-client": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 || ^8.0"
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

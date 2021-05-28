@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Laudis\Neo4j\ClientBuilder;
-use Laudis\Neo4j\Network\Bolt\BoltInjections;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -16,11 +15,8 @@ $user = $user === false ? 'neo4j' : $user;
 $password = getenv('NEO4J_PASSWORD');
 $password = $password === false ? 'abcde' : $password;
 
-$db = getenv('NEO4J_DATABASE');
-$injections = BoltInjections::create($db === false ? 'neo4j' : $db);
-
 $client = ClientBuilder::create()
-    ->addBoltConnection('default', sprintf('bolt://%s:%s@neo4j', $user, $password))
+    ->withDriver('default', sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, getenv('NEO4J_DATABASE')))
     ->build();
 
 $app = AppFactory::create();
