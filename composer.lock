@@ -78,12 +78,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "80018fba45e836806d7d882eeafc100a8a764151"
+                "reference": "e7b76ede58e2c190481c937f03148bdf2f14d14d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/80018fba45e836806d7d882eeafc100a8a764151",
-                "reference": "80018fba45e836806d7d882eeafc100a8a764151",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/e7b76ede58e2c190481c937f03148bdf2f14d14d",
+                "reference": "e7b76ede58e2c190481c937f03148bdf2f14d14d",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,8 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "stefanak-michal/bolt": "^2.2"
+                "stefanak-michal/bolt": "^2.2",
+                "symfony/polyfill-php80": "^1.2"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.19",
@@ -144,7 +145,7 @@
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
                 "source": "https://github.com/neo4j-php/neo4j-php-client/tree/v2.0"
             },
-            "time": "2021-05-28T11:58:08+00:00"
+            "time": "2021-05-28T12:08:12+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -1186,6 +1187,89 @@
                 }
             ],
             "time": "2021-05-06T08:05:53+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php80",
+            "version": "v1.23.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/eca0bf41ed421bed1b57c4958bab16aa86b757d0",
+                "reference": "eca0bf41ed421bed1b57c4958bab16aa86b757d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Bazan",
+                    "email": "ion.bazan@gmail.com"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-02-19T12:13:01+00:00"
         }
     ],
     "packages-dev": [],
