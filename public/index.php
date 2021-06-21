@@ -96,6 +96,5 @@ CYPHER);
     return $response;
 });
 
-// Run app
 $app->run();
 
