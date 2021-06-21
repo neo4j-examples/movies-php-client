@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4156f8f68031f86f0dc788dcaf379a9a",
+    "content-hash": "16e84e502743680fc5d7fa8cda316da6",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "v2.0.x-dev",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "e7b76ede58e2c190481c937f03148bdf2f14d14d"
+                "reference": "ffad7fedc0b5bcf6fb24792927fcac8637ad1610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/e7b76ede58e2c190481c937f03148bdf2f14d14d",
-                "reference": "e7b76ede58e2c190481c937f03148bdf2f14d14d",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/ffad7fedc0b5bcf6fb24792927fcac8637ad1610",
+                "reference": "ffad7fedc0b5bcf6fb24792927fcac8637ad1610",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "stefanak-michal/bolt": "^2.2",
+                "stefanak-michal/bolt": "^2.3",
                 "symfony/polyfill-php80": "^1.2"
             },
             "require-dev": {
@@ -143,9 +143,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/v2.0"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.0.0"
             },
-            "time": "2021-05-28T12:08:12+00:00"
+            "time": "2021-06-18T12:30:01+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -443,16 +443,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "788f72d64c43dc361e7fcc7464c3d947c64984a7"
+                "reference": "778f722e29250c1fac0bbdef2c122fa5d038c9eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/788f72d64c43dc361e7fcc7464c3d947c64984a7",
-                "reference": "788f72d64c43dc361e7fcc7464c3d947c64984a7",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/778f722e29250c1fac0bbdef2c122fa5d038c9eb",
+                "reference": "778f722e29250c1fac0bbdef2c122fa5d038c9eb",
                 "shasum": ""
             },
             "require": {
@@ -469,8 +469,7 @@
                 "puli/composer-plugin": "1.0.0-beta10"
             },
             "suggest": {
-                "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories",
-                "puli/composer-plugin": "Sets up Puli which is recommended for Discovery to work. Check http://docs.php-http.org/en/latest/discovery.html for more details."
+                "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories"
             },
             "type": "library",
             "extra": {
@@ -506,9 +505,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.13.0"
+                "source": "https://github.com/php-http/discovery/tree/1.14.0"
             },
-            "time": "2020-11-27T14:49:42+00:00"
+            "time": "2021-06-01T14:30:21+00:00"
         },
         {
             "name": "php-http/message",
@@ -1275,9 +1274,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "laudis/neo4j-php-client": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
