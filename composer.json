@@ -17,5 +17,8 @@
             "name": "ghlen",
             "email": "ghlen@pm.me"
         }
-    ]
+    ],
+    "scripts": {
+        "start": "php -S localhost:${PORT:-8080}"
+    }
 }
