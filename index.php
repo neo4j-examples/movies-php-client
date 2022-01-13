@@ -73,6 +73,16 @@ CYPHER, ['title' => $request->getQueryParams()['q'] ?? '']);
     return $response;
 });
 
+$app->post('/movie/vote/{title}', static function (Request $request, Response $response, array $args) use ($client) {
+    $result = $client->run(
+        'MATCH (m:Movie {title: $title}) SET m.votes = COALESCE(m.votes, 0) + 1',
+        ['title' => $args['title']]);
+
+    $updates = $result->getSummary()->getCounters()->propertiesSet();
+    $response->getBody()->write(json_encode(['updates' => $updates], JSON_THROW_ON_ERROR));
+    return $response;
+});
+
 $app->get('/graph', static function (Request $request, Response $response) use ($client) {
     $result = $client->run(<<<'CYPHER'
 MATCH (m:Movie)<-[:ACTED_IN]-(a:Person)
