@@ -63,13 +63,14 @@ CYPHER, $args);
 });
 
 $app->get('/search', static function (Request $request, Response $response) use ($client) {
+
     $result = $client->run(<<<'CYPHER'
 MATCH (movie:Movie) 
 WHERE TOLOWER(movie.title) CONTAINS TOLOWER($title)
 RETURN movie {.title, .tagline, .votes, .released}
 CYPHER, ['title' => $request->getQueryParams()['q'] ?? '']);
 
-    $response->getBody()->write(json_encode($result->jsonSerialize()['result'], JSON_THROW_ON_ERROR));
+    $response->getBody()->write(json_encode($result->getResults(), JSON_THROW_ON_ERROR));
     return $response;
 });
 
