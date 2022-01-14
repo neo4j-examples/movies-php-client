@@ -1,0 +1,81 @@
+== Neo4j Movies Application: Quick Start
+
+image::https://github.com/neo4j-examples/movies-php-client/workflows/CI/badge.svg[CI]
+
+== The Stack
+
+These are the components of our Web Application:
+
+* Application Type:         PHP Web Application
+* Web framework:            https://www.slimframework.com/[Slim micro framework]
+* Neo4j Database Connector: https://github.com/neo4j-php/neo4j-php-client[Neo4j PHP Client] for Cypher https://neo4j.com/developer/php[Docs]
+* Database:                 Neo4j-Server (4.x) with multi-database
+* Frontend:                 jquery, bootstrap, https://d3js.org/[d3.js]
+
+Provision a database quickly with https://sandbox.neo4j.com/?usecase=movies[Neo4j Sandbox] or https://neo4j.com/cloud/aura/[Neo4j Aura].
+
+== Endpoints:
+
+Get Movie
+
+----
+// JSON object for single movie with cast
+curl http://BASE_URL/movie/The%20Matrix
+
+// list of JSON objects for movie search results
+curl http://BASE_URL/search?q=matrix
+
+// JSON object for whole graph viz (nodes, links - arrays)
+curl http://BASE_URL/graph
+----
+
+== Setup
+
+This uses the PHP built-in HTTP server, along with the recommended PHP client.
+
+== Run:
+
+First, install dependencies:
+[source,shell]
+----
+composer install
+----
+
+Start this application with:
+
+[source,shell]
+----
+composer run start
+----
+
+Go to http://localhost:8080
+
+You can search for movies by title or and click on any entry.
+
+== Configuration options
+
+[%header,cols=2*]
+|===
+|Environment variable name
+|Default value (or N/A)
+
+|PORT
+|8080
+
+|NEO4J_URI
+|neo4j+s://demo.neo4jlabs.com
+
+|NEO4J_USER
+|movies
+
+|NEO4J_PASSWORD
+|movies
+
+|NEO4J_DATABASE
+|movies
+|===
+
+To run the database locally as well, start your local Neo4j Server (https://neo4j.com/download[Download & Install]), open Neo4j Browser.
+Then install the Movies data-set with `:play movies`, click the statement, and hit the triangular "Run" button.
+
+Then, override the relevant environment variables above.

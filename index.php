@@ -8,21 +8,29 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$user = getenv('NEO4J_USER');
-$user = $user === false ? '' : $user;
-
-$password = getenv('NEO4J_PASSWORD');
-$password = $password === false ? '' : $password;
+$neo4jVersion = getenv('NEO4J_VERSION');
+$neo4jVersion = $neo4jVersion === false ? '' : $neo4jVersion;
 
 $database = getenv('NEO4J_DATABASE');
-$database = $database === false ? 'neo4j' : $database;
+$database = $database === false ? 'movies' : $database;
 
-$url = sprintf('bolt://%s:%s@neo4j?database=%s', $user, $password, $database);
-$auth = $user === '' ? Authenticate::disabled() : Authenticate::fromUrl();
+$uri = getenv('NEO4J_URI');
+$uri = $uri === false ? 'neo4j+s://demo.neo4jlabs.com' : $uri;
+if (!str_starts_with($neo4jVersion, '3')) {
+    $uri = sprintf("%s?database=%s", $uri, $database);
+}
+
+$user = getenv('NEO4J_USER');
+$user = $user === false ? 'movies' : $user;
+
+$password = getenv('NEO4J_PASSWORD');
+$password = $password === false ? 'movies' : $password;
+
+$auth = Authenticate::basic($user, $password);
 $client = ClientBuilder::create()
-    ->withDriver('default', $url, $auth)
+    ->withDriver('default', $uri, $auth)
     ->build();
 
 $app = AppFactory::create();
@@ -30,7 +38,7 @@ $app->addRoutingMiddleware();
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 $app->get('/', static function (Request $request, Response $response) {
-    $response->getBody()->write(file_get_contents(__DIR__ . '/index.html'));
+    $response->getBody()->write(file_get_contents(__DIR__ . '/public/index.html'));
     return $response;
 });
 
@@ -38,11 +46,9 @@ $app->get('/movie/{title}', static function (Request $request, Response $respons
     $result = $client->run(<<<'CYPHER'
 MATCH (movie:Movie {title:$title})
 OPTIONAL MATCH (movie)<-[r]-(person:Person)
-WITH movie.title AS title,
-     collect({name:person.name, job:head(split(toLower(type(r)),'_')), role:r.roles}) AS cast 
+RETURN movie.title AS title,
+       COLLECT({name:person.name, job:head(split(toLower(type(r)),'_')), role:r.roles}) AS cast 
 LIMIT 1
-UNWIND cast AS c 
-RETURN c.name AS name, c.job AS job, c.role AS role
 CYPHER, $args);
 
     if ($result->count() === 0) {
@@ -52,18 +58,29 @@ CYPHER, $args);
         return $response->withStatus(404);
     }
 
-    $response->getBody()->write(json_encode(['cast' => $result], JSON_THROW_ON_ERROR));
+    $response->getBody()->write(json_encode($result->first(), JSON_THROW_ON_ERROR));
     return $response;
 });
 
 $app->get('/search', static function (Request $request, Response $response) use ($client) {
+
     $result = $client->run(<<<'CYPHER'
 MATCH (movie:Movie) 
-WHERE toLower(movie.title) contains toLower($title)
-RETURN {title: movie.title, released: movie.released, tagline: movie.tagline} as movie
+WHERE TOLOWER(movie.title) CONTAINS TOLOWER($title)
+RETURN movie {.title, .tagline, .votes, .released}
 CYPHER, ['title' => $request->getQueryParams()['q'] ?? '']);
 
-    $response->getBody()->write(json_encode($result, JSON_THROW_ON_ERROR));
+    $response->getBody()->write(json_encode($result->getResults(), JSON_THROW_ON_ERROR));
+    return $response;
+});
+
+$app->post('/movie/vote/{title}', static function (Request $request, Response $response, array $args) use ($client) {
+    $result = $client->run(
+        'MATCH (m:Movie {title: $title}) SET m.votes = COALESCE(m.votes, 0) + 1',
+        ['title' => $args['title']]);
+
+    $updates = $result->getSummary()->getCounters()->propertiesSet();
+    $response->getBody()->write(json_encode(['updates' => $updates], JSON_THROW_ON_ERROR));
     return $response;
 });
 
@@ -71,7 +88,8 @@ $app->get('/graph', static function (Request $request, Response $response) use (
     $result = $client->run(<<<'CYPHER'
 MATCH (m:Movie)<-[:ACTED_IN]-(a:Person)
 RETURN m.title AS movie, collect(a.name) AS cast
-CYPHER);
+CYPHER
+    );
 
     $tbr = ['nodes' => [], 'links' => []];
     $mappings = [];
@@ -84,7 +102,7 @@ CYPHER);
             $number = $mappings['Person:' . $person] ?? null;
             if ($number === null) {
                 $number = count($mappings);
-                $mappings['Person:' .  $person] = $number;
+                $mappings['Person:' . $person] = $number;
                 $tbr['nodes'][] = ['title' => $person, 'label' => 'actor'];
             }
             $tbr['links'][] = ['source' => $number, 'target' => $mappings['Movie:' . $movieTitle]];
