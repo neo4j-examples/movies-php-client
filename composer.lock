@@ -74,21 +74,21 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.3.9",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "91c1ee29ceef0be9b979459b71ed8e41846d8e34"
+                "reference": "29043ba28085b2406f01137ec44afe20f43e33c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/91c1ee29ceef0be9b979459b71ed8e41846d8e34",
-                "reference": "91c1ee29ceef0be9b979459b71ed8e41846d8e34",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/29043ba28085b2406f01137ec44afe20f43e33c5",
+                "reference": "29043ba28085b2406f01137ec44afe20f43e33c5",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laudis/typed-enum": "^1.1",
+                "laudis/typed-enum": "^1.3.2",
                 "php": "^7.4 || ^8.0",
                 "php-http/discovery": "^1.13",
                 "php-http/message": "^1.0",
@@ -96,7 +96,7 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "stefanak-michal/bolt": "^2.7.1",
+                "stefanak-michal/bolt": "^3.1.1",
                 "symfony/polyfill-php80": "^1.2"
             },
             "require-dev": {
@@ -148,9 +148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.3.9"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.4.0"
             },
-            "time": "2022-01-14T14:39:15+00:00"
+            "time": "2022-01-16T17:16:34+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -1079,16 +1079,16 @@
         },
         {
             "name": "stefanak-michal/bolt",
-            "version": "v2.7.1",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/Bolt.git",
-                "reference": "13827edab6db40ed91422012f851a1901c572e0c"
+                "reference": "3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/Bolt/zipball/13827edab6db40ed91422012f851a1901c572e0c",
-                "reference": "13827edab6db40ed91422012f851a1901c572e0c",
+                "url": "https://api.github.com/repos/neo4j-php/Bolt/zipball/3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb",
+                "reference": "3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb",
                 "shasum": ""
             },
             "require": {
@@ -1137,7 +1137,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2021-12-16T15:40:47+00:00"
+            "time": "2022-01-15T23:14:31+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
