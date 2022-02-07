@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.4.1",
+            "version": "2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "e2a3e9f9f8d5e07fc7b14196506c8014c192e879"
+                "reference": "14d32da86e72e8f66503a58763eb241e8a47ac91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/e2a3e9f9f8d5e07fc7b14196506c8014c192e879",
-                "reference": "e2a3e9f9f8d5e07fc7b14196506c8014c192e879",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/14d32da86e72e8f66503a58763eb241e8a47ac91",
+                "reference": "14d32da86e72e8f66503a58763eb241e8a47ac91",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "symfony/polyfill-php80": "^1.2"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "3.0.2",
+                "friendsofphp/php-cs-fixer": "^3.5",
                 "kriswallsmith/buzz": "^1.2",
                 "lctrs/psalm-psr-container-plugin": "^1.3",
                 "monolog/monolog": "^2.2",
@@ -148,9 +148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.4.1"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.4.4"
             },
-            "time": "2022-01-20T16:35:55+00:00"
+            "time": "2022-02-06T15:12:58+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -1167,12 +1167,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
