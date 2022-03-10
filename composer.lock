@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "clue/stream-filter",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/stream-filter.git",
-                "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320"
+                "reference": "d6169430c7731d8509da7aecd0af756a5747b78e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/stream-filter/zipball/aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
-                "reference": "aeb7d8ea49c7963d3b581378955dbf5bc49aa320",
+                "url": "https://api.github.com/repos/clue/stream-filter/zipball/d6169430c7731d8509da7aecd0af756a5747b78e",
+                "reference": "d6169430c7731d8509da7aecd0af756a5747b78e",
                 "shasum": ""
             },
             "require": {
@@ -28,12 +28,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Clue\\StreamFilter\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "Clue\\StreamFilter\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -58,7 +58,7 @@
             ],
             "support": {
                 "issues": "https://github.com/clue/stream-filter/issues",
-                "source": "https://github.com/clue/stream-filter/tree/v1.5.0"
+                "source": "https://github.com/clue/stream-filter/tree/v1.6.0"
             },
             "funding": [
                 {
@@ -70,20 +70,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-02T12:38:20+00:00"
+            "time": "2022-02-21T13:15:14+00:00"
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.4.4",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "14d32da86e72e8f66503a58763eb241e8a47ac91"
+                "reference": "1987908f26ff29903201dc19439f40e2d39d776e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/14d32da86e72e8f66503a58763eb241e8a47ac91",
-                "reference": "14d32da86e72e8f66503a58763eb241e8a47ac91",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/1987908f26ff29903201dc19439f40e2d39d776e",
+                "reference": "1987908f26ff29903201dc19439f40e2d39d776e",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
-                "stefanak-michal/bolt": "^3.1.1",
+                "stefanak-michal/bolt": "^3.1.2",
                 "symfony/polyfill-php80": "^1.2"
             },
             "require-dev": {
@@ -112,7 +112,7 @@
                 "psr/container": "^1.1",
                 "psr/log": "^1.1",
                 "symfony/uid": "^5.0",
-                "vimeo/psalm": "^4.13.0",
+                "vimeo/psalm": "^4.20",
                 "vlucas/phpdotenv": "^5.0"
             },
             "suggest": {
@@ -148,9 +148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.4.4"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.5.1"
             },
-            "time": "2022-02-06T15:12:58+00:00"
+            "time": "2022-03-09T21:50:45+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -461,16 +461,16 @@
         },
         {
             "name": "php-http/message",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "39eb7548be982a81085fe5a6e2a44268cd586291"
+                "reference": "7886e647a30a966a1a8d1dad1845b71ca8678361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/39eb7548be982a81085fe5a6e2a44268cd586291",
-                "reference": "39eb7548be982a81085fe5a6e2a44268cd586291",
+                "url": "https://api.github.com/repos/php-http/message/zipball/7886e647a30a966a1a8d1dad1845b71ca8678361",
+                "reference": "7886e647a30a966a1a8d1dad1845b71ca8678361",
                 "shasum": ""
             },
             "require": {
@@ -487,7 +487,7 @@
                 "ext-zlib": "*",
                 "guzzlehttp/psr7": "^1.0",
                 "laminas/laminas-diactoros": "^2.0",
-                "phpspec/phpspec": "^5.1 || ^6.3",
+                "phpspec/phpspec": "^5.1 || ^6.3 || ^7.1",
                 "slim/slim": "^3.0"
             },
             "suggest": {
@@ -503,12 +503,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Http\\Message\\": "src/"
-                },
                 "files": [
                     "src/filters.php"
-                ]
+                ],
+                "psr-4": {
+                    "Http\\Message\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -529,9 +529,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/message/issues",
-                "source": "https://github.com/php-http/message/tree/1.12.0"
+                "source": "https://github.com/php-http/message/tree/1.13.0"
             },
-            "time": "2021-08-29T09:13:12+00:00"
+            "time": "2022-02-11T13:41:14+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -1079,16 +1079,16 @@
         },
         {
             "name": "stefanak-michal/bolt",
-            "version": "v3.1.1",
+            "version": "v3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/Bolt.git",
-                "reference": "3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb"
+                "reference": "350a15cb8eeded9b908380cdee5fa10285470a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/Bolt/zipball/3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb",
-                "reference": "3c34bf785ca0b7f056e2430c01dc7af40cd4b3fb",
+                "url": "https://api.github.com/repos/neo4j-php/Bolt/zipball/350a15cb8eeded9b908380cdee5fa10285470a10",
+                "reference": "350a15cb8eeded9b908380cdee5fa10285470a10",
                 "shasum": ""
             },
             "require": {
@@ -1099,6 +1099,7 @@
                 "phpunit/phpunit": ">=7.5.0"
             },
             "suggest": {
+                "ext-openssl": "Needed when using StreamSocket connection class with SSL",
                 "ext-sockets": "Needed when using the Bolt\\connection\\Socket",
                 "laudis/neo4j-php-client": "Neo4j-PHP-Client is the most advanced PHP Client for Neo4j"
             },
@@ -1133,24 +1134,24 @@
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.me/MichalStefanak",
-                    "type": "paypal"
+                    "url": "https://ko-fi.com/michalstefanak",
+                    "type": "ko-fi"
                 }
             ],
-            "time": "2022-01-15T23:14:31+00:00"
+            "time": "2022-03-02T15:38:53+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.24.0",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9"
+                "reference": "4407588e0d3f1f52efb65fbe92babe41f37fe50c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/57b712b08eddb97c762a8caa32c84e037892d2e9",
-                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4407588e0d3f1f52efb65fbe92babe41f37fe50c",
+                "reference": "4407588e0d3f1f52efb65fbe92babe41f37fe50c",
                 "shasum": ""
             },
             "require": {
@@ -1204,7 +1205,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.24.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.25.0"
             },
             "funding": [
                 {
@@ -1220,7 +1221,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-13T13:58:33+00:00"
+            "time": "2022-03-04T08:16:47+00:00"
         }
     ],
     "packages-dev": [],
