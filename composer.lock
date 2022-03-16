@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "1987908f26ff29903201dc19439f40e2d39d776e"
+                "reference": "fe4856893d58284822638a4bebb2529619868201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/1987908f26ff29903201dc19439f40e2d39d776e",
-                "reference": "1987908f26ff29903201dc19439f40e2d39d776e",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/fe4856893d58284822638a4bebb2529619868201",
+                "reference": "fe4856893d58284822638a4bebb2529619868201",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.5.1"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.5.2"
             },
-            "time": "2022-03-09T21:50:45+00:00"
+            "time": "2022-03-15T14:03:55+00:00"
         },
         {
             "name": "laudis/typed-enum",
