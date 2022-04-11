@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.5.1",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "1987908f26ff29903201dc19439f40e2d39d776e"
+                "reference": "6a5226cbcd43f0ede4df1e573d9b1a4820214aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/1987908f26ff29903201dc19439f40e2d39d776e",
-                "reference": "1987908f26ff29903201dc19439f40e2d39d776e",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/6a5226cbcd43f0ede4df1e573d9b1a4820214aca",
+                "reference": "6a5226cbcd43f0ede4df1e573d9b1a4820214aca",
                 "shasum": ""
             },
             "require": {
@@ -112,6 +112,7 @@
                 "psr/container": "^1.1",
                 "psr/log": "^1.1",
                 "symfony/uid": "^5.0",
+                "symfony/var-dumper": "^5.0",
                 "vimeo/psalm": "^4.20",
                 "vlucas/phpdotenv": "^5.0"
             },
@@ -148,9 +149,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.5.1"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.6.1"
             },
-            "time": "2022-03-09T21:50:45+00:00"
+            "time": "2022-04-09T16:47:14+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -1235,5 +1236,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
