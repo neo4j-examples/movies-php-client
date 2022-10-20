@@ -19,6 +19,9 @@
         }
     ],
     "scripts": {
-        "start": "php -S localhost:${PORT:-8080}"
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S localhost:${PORT:-8080}"
+        ]
     }
 }
