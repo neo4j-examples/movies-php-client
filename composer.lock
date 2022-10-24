@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "439a59282f9fcfc6799b24fe617bf1ebf716ccc0"
+                "reference": "395c13463db8c9196b8f213d451da4b453fae7ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/439a59282f9fcfc6799b24fe617bf1ebf716ccc0",
-                "reference": "439a59282f9fcfc6799b24fe617bf1ebf716ccc0",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/395c13463db8c9196b8f213d451da4b453fae7ab",
+                "reference": "395c13463db8c9196b8f213d451da4b453fae7ab",
                 "shasum": ""
             },
             "require": {
@@ -96,10 +96,15 @@
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
+                "psr/simple-cache": "^1.0",
                 "stefanak-michal/bolt": "^4.1",
                 "symfony/polyfill-php80": "^1.2"
             },
+            "provide": {
+                "psr/simple-cache-implementation": "2.0|3.0"
+            },
             "require-dev": {
+                "cache/integration-tests": "dev-master",
                 "friendsofphp/php-cs-fixer": "3.8.0",
                 "kriswallsmith/buzz": "^1.2",
                 "lctrs/psalm-psr-container-plugin": "^1.3",
@@ -113,12 +118,13 @@
                 "psr/log": "^1.1",
                 "symfony/uid": "^5.0",
                 "symfony/var-dumper": "^5.0",
-                "vimeo/psalm": "4.23.0",
+                "vimeo/psalm": "4.29.0",
                 "vlucas/phpdotenv": "^5.0"
             },
             "suggest": {
                 "composer-runtime-api": "Install composer 2 for auto detection of version in user agent",
-                "ext-bcmath": "Needed to implement bolt protocol"
+                "ext-bcmath": "Needed to implement bolt protocol",
+                "ext-sysvsem": "Needed for enabling connection pooling between processes"
             },
             "type": "library",
             "autoload": {
@@ -149,9 +155,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.7.0"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/2.8.0"
             },
-            "time": "2022-07-22T08:29:36+00:00"
+            "time": "2022-10-13T11:14:03+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -963,6 +969,57 @@
                 "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
             "time": "2021-05-03T11:20:27+00:00"
+        },
+        {
+            "name": "psr/simple-cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\SimpleCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interfaces for simple caching",
+            "keywords": [
+                "cache",
+                "caching",
+                "psr",
+                "psr-16",
+                "simple-cache"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/master"
+            },
+            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "slim/slim",
