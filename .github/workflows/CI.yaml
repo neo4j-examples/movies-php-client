@@ -31,7 +31,7 @@ jobs:
           --volume /tmp:/movies
     steps:
       - name: Import dataset (Neo4j 5)
-        if: ${{ !startsWith(matrix.neo4j-version, '5') }}
+        if: ${{ startsWith(matrix.neo4j-version, '5') }}
         run: |
           curl --fail --output /tmp/movies.cypher https://github.com/neo4j-graph-examples/movies/blob/main/data/movies-50.dump?raw=true && \
           docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
