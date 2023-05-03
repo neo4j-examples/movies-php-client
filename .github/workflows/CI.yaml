@@ -32,8 +32,6 @@ jobs:
     steps:
       - name: Download dataset
         run: curl --fail --output /tmp/movies.cypher https://raw.githubusercontent.com/neo4j-graph-examples/movies/8508a527d8aa1c261b0978d1d5b3156d4ac8328e/scripts/import.cypher
-      - name: Import dataset (Neo4j 3.5)
-        run: docker exec --interactive neo4j-e2e sh -c 'cat /movies/movies.cypher | cypher-shell -u neo4j -p testtest'
       - name: Import dataset
         run: docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
       - name: Check out project sources
