@@ -25,5 +25,8 @@
         "allow-plugins": {
             "php-http/discovery": true
         }
+    },
+    "require-dev": {
+        "vimeo/psalm": "^5.10"
     }
 }
