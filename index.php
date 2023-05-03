@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use Laudis\Neo4j\Authentication\Authenticate;
+use Laudis\Neo4j\Basic\Driver;
 use Laudis\Neo4j\ClientBuilder;
+use Laudis\Neo4j\Types\ArrayList;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -23,21 +25,21 @@ $password = getenv('NEO4J_PASSWORD');
 $password = $password === false ? 'movies' : $password;
 
 $auth = Authenticate::basic($user, $password);
-$client = ClientBuilder::create()
-    ->withDriver('default', $uri, $auth)
-    ->build();
+$driver = Driver::create($uri, authenticate: $auth);
+$session = $driver->createSession();
 
 $app = AppFactory::create();
 $app->addRoutingMiddleware();
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$app->addErrorMiddleware(true, true, true);
 
 $app->get('/', static function (Request $request, Response $response) {
     $response->getBody()->write(file_get_contents(__DIR__ . '/public/index.html'));
     return $response;
 });
 
-$app->get('/movie/{title}', static function (Request $request, Response $response, array $args) use ($client) {
-    $result = $client->run(<<<'CYPHER'
+$app->get('/movie/{title}', static function (Request $request, Response $response, array $args) use ($session) {
+    /** @var array{title: string} $args */
+    $result = $session->run(<<<'CYPHER'
 MATCH (movie:Movie {title:$title})
 OPTIONAL MATCH (movie)<-[r]-(person:Person)
 RETURN movie.title AS title,
@@ -56,9 +58,9 @@ CYPHER, $args);
     return $response;
 });
 
-$app->get('/search', static function (Request $request, Response $response) use ($client) {
+$app->get('/search', static function (Request $request, Response $response) use ($session) {
 
-    $result = $client->run(<<<'CYPHER'
+    $result = $session->run(<<<'CYPHER'
 MATCH (movie:Movie) 
 WHERE TOLOWER(movie.title) CONTAINS TOLOWER($title)
 RETURN movie {.title, .tagline, .votes, .released}
@@ -68,8 +70,8 @@ CYPHER, ['title' => $request->getQueryParams()['q'] ?? '']);
     return $response;
 });
 
-$app->post('/movie/vote/{title}', static function (Request $request, Response $response, array $args) use ($client) {
-    $result = $client->run(
+$app->post('/movie/vote/{title}', static function (Request $request, Response $response, array $args) use ($session) {
+    $result = $session->run(
         'MATCH (m:Movie {title: $title}) SET m.votes = COALESCE(m.votes, 0) + 1',
         ['title' => $args['title']]);
 
@@ -78,8 +80,8 @@ $app->post('/movie/vote/{title}', static function (Request $request, Response $r
     return $response;
 });
 
-$app->get('/graph', static function (Request $request, Response $response) use ($client) {
-    $result = $client->run(<<<'CYPHER'
+$app->get('/graph', static function (Request $request, Response $response) use ($session) {
+    $result = $session->run(<<<'CYPHER'
 MATCH (m:Movie)<-[:ACTED_IN]-(a:Person)
 RETURN m.title AS movie, collect(a.name) AS cast
 CYPHER
@@ -89,10 +91,12 @@ CYPHER
     $mappings = [];
 
     foreach ($result as $row) {
-        $movieTitle = $row->get('movie');
+        $movieTitle = $row->getAsString('movie');
         $mappings['Movie:' . $movieTitle] = count($mappings);
         $tbr['nodes'][] = ['title' => $movieTitle, 'label' => 'movie'];
-        foreach ($row->get('cast') as $person) {
+        /** @var ArrayList<string> $cast */
+        $cast = $row->getAsArrayList('cast');
+        foreach ($cast as $person) {
             $number = $mappings['Person:' . $person] ?? null;
             if ($number === null) {
                 $number = count($mappings);
