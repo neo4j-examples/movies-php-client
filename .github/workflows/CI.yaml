@@ -30,10 +30,16 @@ jobs:
           --health-retries 5
           --volume /tmp:/movies
     steps:
-      - name: Download dataset
-        run: curl --fail --output /tmp/movies.cypher https://raw.githubusercontent.com/neo4j-graph-examples/movies/8508a527d8aa1c261b0978d1d5b3156d4ac8328e/scripts/import.cypher
-      - name: Import dataset
-        run: docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
+      - name: Import dataset (Neo4j 5)
+        if: ${{ !startsWith(matrix.neo4j-version, '5') }}
+        run: |
+          curl --fail --output /tmp/movies.cypher https://github.com/neo4j-graph-examples/movies/blob/main/data/movies-50.dump?raw=true && \
+          docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
+      - name: Import dataset (Neo4j 4.4)
+        if: ${{ startsWith(matrix.neo4j-version, '4.4') }}
+        run: |
+          curl --fail --output /tmp/movies.cypher https://github.com/neo4j-graph-examples/movies/blob/main/data/movies-43.dump?raw=true && \
+          docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
       - name: Check out project sources
         uses: actions/checkout@v2
       - uses: php-actions/composer@v6
