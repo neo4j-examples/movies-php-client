@@ -10,17 +10,11 @@ use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$neo4jVersion = getenv('NEO4J_VERSION');
-$neo4jVersion = $neo4jVersion === false ? '' : $neo4jVersion;
-
 $database = getenv('NEO4J_DATABASE');
 $database = $database === false ? 'movies' : $database;
 
 $uri = getenv('NEO4J_URI');
-$uri = $uri === false ? 'neo4j+s://demo.neo4jlabs.com' : $uri;
-if (!str_starts_with($neo4jVersion, '3')) {
-    $uri = sprintf("%s?database=%s", $uri, $database);
-}
+$uri = $uri === false ? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database) : $uri;
 
 $user = getenv('NEO4J_USER');
 $user = $user === false ? 'movies' : $user;
