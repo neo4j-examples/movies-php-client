@@ -6,3 +6,6 @@ target
 .idea
 /node_modules
 /vendor
+.ph-pkg
+.php-cs-fixer.cache
+
