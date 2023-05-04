@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/opt/project
     working_dir: /opt/project
+    entrypoint: composer install --no-interaction
     command: composer run start
     env_file:
       - ${ENV_FILE-.env.example}
