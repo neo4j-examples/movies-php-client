@@ -17,11 +17,8 @@ $database = false === $database ? 'movies' : $database;
 $uri = getenv('NEO4J_URI');
 $uri = false === $uri ? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database) : $uri;
 
-$user = getenv('NEO4J_USER');
-$user = false === $user ? 'movies' : $user;
-
-$password = getenv('NEO4J_PASSWORD');
-$password = false === $password ? 'movies' : $password;
+$auth = getenv('NEO4J_AUTH');
+[$user, $password] = (false === $auth) ? ['movies', 'movies'] : [...explode('/', $auth), ...['testtest']];
 
 $auth = Authenticate::basic($user, $password);
 $driver = Driver::create($uri, authenticate: $auth);
