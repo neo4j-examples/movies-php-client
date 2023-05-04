@@ -11,14 +11,10 @@ use Slim\Factory\AppFactory;
 
 require __DIR__.'/vendor/autoload.php';
 
-$database = getenv('NEO4J_initial_dbms_default__database');
-$database = false === $database ? 'movies' : $database;
-
-$uri = getenv('CONNECTION_URI');
-$uri = false === $uri ? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database) : $uri;
-
-$auth = getenv('NEO4J_AUTH');
-[$user, $password] = (false === $auth) ? ['movies', 'movies'] : [...explode('/', $auth), ...['testtest']];
+$database = $_ENV['NEO4J_initial_dbms_default__database'] ?? 'movies';
+$uri = $_ENV['CONNECTION_URI'] ?? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database);
+$user = $_ENV['DB_USER'] ?? 'neo4j';
+$password = $_ENV['DB_PASSWORD'] ?? 'testtest';
 
 $auth = Authenticate::basic($user, $password);
 $driver = Driver::create($uri, authenticate: $auth);
