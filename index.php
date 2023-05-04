@@ -11,10 +11,10 @@ use Slim\Factory\AppFactory;
 
 require __DIR__.'/vendor/autoload.php';
 
-$database = getenv('NEO4J_DATABASE');
+$database = getenv('NEO4J_initial_dbms_default__database');
 $database = false === $database ? 'movies' : $database;
 
-$uri = getenv('NEO4J_URI');
+$uri = getenv('CONNECTION_URI');
 $uri = false === $uri ? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database) : $uri;
 
 $auth = getenv('NEO4J_AUTH');
