@@ -17,9 +17,21 @@ services:
     networks:
       - neo4j
 
-  neo4j:
+  db:
     image: neo4j:5
+    user: ${UID-1000}:${GID-1000}
+    healthcheck:
+      test: bash /healthcheck.bash
+      interval: 10s
+      timeout: 5s
+      retries: 5
     env_file:
       - ${ENV_FILE-.env.example}
+    volumes:
+      - ./import:/var/lib/neo4j/import
+      - ./healthcheck.bash:/healthcheck.bash
+    ports:
+      - "7474:7474"
+      - "7687:7687"
     networks:
       - neo4j

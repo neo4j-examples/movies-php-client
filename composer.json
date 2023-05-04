@@ -19,7 +19,7 @@
         }
     ],
     "scripts": {
-        "start": "php -S localhost:${PORT:-8080}"
+        "start": "php -S 0.0.0.0:${PORT:-8080}"
     },
     "config": {
         "allow-plugins": {
