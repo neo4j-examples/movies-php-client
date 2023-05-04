@@ -9,7 +9,7 @@ services:
     volumes:
       - ./:/opt/project
     working_dir: /opt/project
-    entrypoint: composer install --no-interaction
+    entrypoint: /opt/project/docker/backend/entrypoint.sh
     command: composer run start
     env_file:
       - ${ENV_FILE-.env.example}
@@ -29,8 +29,8 @@ services:
     env_file:
       - ${ENV_FILE-.env.example}
     volumes:
-      - ./import:/var/lib/neo4j/import
-      - ./healthcheck.bash:/healthcheck.bash
+      - ./docker/db/import:/var/lib/neo4j/import
+      - ./docker/db/healthcheck.bash:/healthcheck.bash
     ports:
       - "7474:7474"
       - "7687:7687"

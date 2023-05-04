@@ -24,7 +24,8 @@
     "config": {
         "allow-plugins": {
             "php-http/discovery": true
-        }
+        },
+        "process-timeout": 0
     },
     "require-dev": {
         "vimeo/psalm": "^5.10",
