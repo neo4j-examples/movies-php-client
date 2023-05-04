@@ -1,0 +1,25 @@
+version: "3.8"
+
+networks:
+  neo4j:
+
+services:
+  backend:
+    image: composer:2.5
+    volumes:
+      - ./:/opt/project
+    working_dir: /opt/project
+    command: composer run start
+    env_file:
+      - ${ENV_FILE-.env.example}
+    ports:
+      - "8080:8080"
+    networks:
+      - neo4j
+
+  neo4j:
+    image: neo4j:5
+    env_file:
+      - ${ENV_FILE-.env.example}
+    networks:
+      - neo4j
