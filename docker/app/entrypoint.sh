@@ -2,6 +2,15 @@
 
 set -e
 
-composer install --no-interaction
+if [ ! -d vendor ]; then
+  composer install \
+    --no-dev \
+    --no-interaction \
+    --no-progress \
+    --optimize-autoloader \
+    --classmap-authoritative \
+    --no-scripts \
+    --prefer-dist
+fi
 
 exec "$@"

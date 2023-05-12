@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: [ "8.1" ]
         node-version: [ 18.x ]
         neo4j-version: [ "4.4", "4.4-enterprise", "5", "5-enterprise" ]
     services:
+      app:
+        image: composer:2.5
       neo4j:
         image: neo4j:${{ matrix.neo4j-version }}
         ports: [ "7687:7687" ]
@@ -29,29 +30,19 @@ jobs:
           --health-start-period 10s
           --health-retries 5
           --volume /tmp:/movies
+
     steps:
-      - name: Import dataset (Neo4j 5)
-        if: ${{ startsWith(matrix.neo4j-version, '5') }}
-        run: |
-          curl --fail --output /tmp/movies.cypher https://github.com/neo4j-graph-examples/movies/blob/main/data/movies-50.dump?raw=true && \
-          docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
-      - name: Import dataset (Neo4j 4.4)
-        if: ${{ startsWith(matrix.neo4j-version, '4.4') }}
-        run: |
-          curl --fail --output /tmp/movies.cypher https://github.com/neo4j-graph-examples/movies/blob/main/data/movies-43.dump?raw=true && \
-          docker exec --interactive neo4j-e2e cypher-shell -u neo4j -p testtest --file /movies/movies.cypher
       - name: Check out project sources
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Import dataset
+        run: docker exec neo4j-e2e cypher-shell -u "$DB_USER" -p "$DB_PASSWORD" --file /var/lib/neo4j/import/movies.cypher
       - uses: php-actions/composer@v6
         name: Install PHP and Composer
         with:
           progress: yes
           php_version: ${{ matrix.php-version }}
-      - name: Check out test harness sources
-        uses: actions/checkout@v2
-        with:
-          repository: neo4j-examples/movies-harness
-          path: e2e
       - uses: cypress-io/github-action@v5
         env:
           NEO4J_URI: bolt://localhost
