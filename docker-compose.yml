@@ -15,8 +15,6 @@ services:
       - ${ENV_FILE-.env.example}
     ports:
       - "8080:8080"
-    expose:
-      - "8080"
     networks:
       - neo4j
     depends_on:
