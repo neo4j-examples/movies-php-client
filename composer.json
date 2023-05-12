@@ -20,6 +20,7 @@
     ],
     "scripts": {
         "start": "php -S 0.0.0.0:${PORT:-8080}",
+        "start-docker": "docker-compose up",
         "e2e-test": "docker run -w /e2e -v $PWD/tests/movies-harness:/e2e --network host cypress/included:12.12.0"
     },
     "config": {
