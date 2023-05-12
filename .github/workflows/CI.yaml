@@ -7,7 +7,25 @@ on:
     branches: [ '**' ]
 
 jobs:
+  php-cs-fixer:
+    name: PHP-CS-Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: PHP-CS-Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+
+  psalm:
+    name: Psalm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Psalm
+        uses: docker://ghcr.io/psalm/psalm-github-actions
+
   e2e:
+    name: End to end tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
