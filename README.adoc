@@ -9,7 +9,7 @@ These are the components of our Web Application:
 * Application Type:         PHP Web Application
 * Web framework:            https://www.slimframework.com/[Slim micro framework]
 * Neo4j Database Connector: https://github.com/neo4j-php/neo4j-php-client[Neo4j PHP Client] for Cypher https://neo4j.com/developer/php[Docs]
-* Database:                 Neo4j-Server (4.x) with multi-database
+* Database:                 Neo4j-Server (4.x and 5.x) with multi-database
 * Frontend:                 jquery, bootstrap, https://d3js.org/[d3.js]
 
 Provision a database quickly with https://sandbox.neo4j.com/?usecase=movies[Neo4j Sandbox] or https://neo4j.com/cloud/aura/[Neo4j Aura].
@@ -79,3 +79,7 @@ To run the database locally as well, start your local Neo4j Server (https://neo4
 Then install the Movies data-set with `:play movies`, click the statement, and hit the triangular "Run" button.
 
 Then, override the relevant environment variables above.
+
+Another way is just to use docker and run:
+
+`docker compose up --build --wait`
