@@ -55,6 +55,7 @@ jobs:
       - uses: isbang/compose-action@v1.4.1
         with:
           services: app
+          up-flags: --build
 
       - name: Import dataset
         run: docker exec neo4j-e2e cypher-shell -u neo4j -p testtest --file /var/lib/neo4j/import/movies.cypher
