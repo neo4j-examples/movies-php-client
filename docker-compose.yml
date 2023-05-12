@@ -4,19 +4,23 @@ networks:
   neo4j:
 
 services:
-  backend:
+  app:
     image: composer:2.5
     volumes:
       - ./:/opt/project
     working_dir: /opt/project
-    entrypoint: /opt/project/docker/backend/entrypoint.sh
+    entrypoint: /opt/project/docker/app/entrypoint.sh
     command: composer run start
     env_file:
       - ${ENV_FILE-.env.example}
     ports:
       - "8080:8080"
+    expose:
+      - "8080"
     networks:
       - neo4j
+    depends_on:
+      - db
 
   db:
     image: neo4j:5

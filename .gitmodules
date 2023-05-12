@@ -1,0 +1,3 @@
+[submodule "tests/movies-harness"]
+	path = tests/movies-harness
+	url = https://github.com/neo4j-examples/movies-harness.git
