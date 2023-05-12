@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Psalm
         uses: docker://ghcr.io/psalm/psalm-github-actions
 
@@ -29,11 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x ]
         neo4j-version: [ "4.4", "4.4-enterprise", "5", "5-enterprise" ]
     services:
-      app:
-        image: composer:2.5
       neo4j:
         image: neo4j:${{ matrix.neo4j-version }}
         ports: [ "7687:7687" ]
@@ -51,24 +48,17 @@ jobs:
 
     steps:
       - name: Check out project sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
+
+      - uses: isbang/compose-action@v1.4.1
+        with:
+          services: app
+
       - name: Import dataset
-        run: docker exec neo4j-e2e cypher-shell -u "$DB_USER" -p "$DB_PASSWORD" --file /var/lib/neo4j/import/movies.cypher
-      - uses: php-actions/composer@v6
-        name: Install PHP and Composer
-        with:
-          progress: yes
-          php_version: ${{ matrix.php-version }}
+        run: docker exec neo4j-e2e cypher-shell -u neo4j -p testtest --file /var/lib/neo4j/import/movies.cypher
+
       - uses: cypress-io/github-action@v5
-        env:
-          NEO4J_URI: bolt://localhost
-          NEO4J_DATABASE: "neo4j"
-          NEO4J_USER: neo4j
-          NEO4J_PASSWORD: testtest
         with:
-          working-directory: e2e
-          browser: chrome
-          headless: true
-          start: composer --working-dir=.. run start
+          working-directory: tests/movies-harness
