@@ -18,4 +18,4 @@ RUN composer install \
   --prefer-dist && \
   chmod +x /opt/entrypoint.sh
 
-CMD [ "composer", "run", "start" ]
+CMD composer run start

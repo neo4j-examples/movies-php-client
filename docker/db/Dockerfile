@@ -8,7 +8,7 @@ COPY healthcheck.bash /healthcheck.bash
 RUN chmod +x /healthcheck.bash
 
 HEALTHCHECK --interval=10s \
-    --timeout=5s \
+    --timeout=60s \
     --start-period=5s \
-    --retries=3 \
+    --retries=10 \
     CMD /healthcheck.bash
