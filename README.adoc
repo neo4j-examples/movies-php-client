@@ -33,6 +33,8 @@ curl http://BASE_URL/graph
 
 This uses the PHP built-in HTTP server, along with the recommended PHP client.
 
+It requires PHP 8.2.35+, 8.3.36+, 8.4.27+ or 8.5.12+. Earlier patch releases are vulnerable to CVE-2026-109618 and CVE-2026-109619, and `composer install` refuses to run on them.
+
 == Run:
 
 First, install dependencies:
