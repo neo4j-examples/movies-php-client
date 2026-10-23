@@ -13,4 +13,6 @@ if [ ! -d vendor ]; then
     --prefer-dist
 fi
 
+composer check-platform-reqs --no-dev
+
 exec "$@"

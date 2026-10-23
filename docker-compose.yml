@@ -8,6 +8,7 @@ services:
     build:
       context: .
       dockerfile: docker/app/Dockerfile
+      pull: true
     image: neo4j-examples/movies-php-client:${TAG-latest}
     volumes:
       - .:/opt/project

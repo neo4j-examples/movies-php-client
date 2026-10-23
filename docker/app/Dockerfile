@@ -1,4 +1,8 @@
-FROM composer:2.5
+FROM php:8.4-cli-alpine
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+RUN apk add --no-cache unzip
 
 WORKDIR /opt/project
 
@@ -16,6 +20,7 @@ RUN composer install \
   --classmap-authoritative \
   --no-scripts \
   --prefer-dist && \
+  composer check-platform-reqs --no-dev && \
   chmod +x /opt/entrypoint.sh
 
 CMD composer run start
