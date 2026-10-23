@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eo pipefail
 
 NODECOUNT="$(echo "MATCH (x) RETURN count(x) AS count" | cypher-shell -u "$DB_USER" -p "$DB_PASSWORD"  | tail -1)"
 
