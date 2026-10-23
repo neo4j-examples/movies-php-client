@@ -1,0 +1,30 @@
+name: Security
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ '**' ]
+  schedule:
+    # Re-audit the unchanged lock file daily so newly published advisories fail the build.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  composer-audit:
+    name: Composer audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer:v2
+          coverage: none
+
+      - name: Audit composer.lock against the Packagist advisory database
+        run: composer audit --locked --no-interaction --abandoned=report
