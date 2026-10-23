@@ -54,32 +54,47 @@ You can search for movies by title or and click on any entry.
 
 == Configuration options
 
-[%header,cols=2*]
+Without any configuration the application connects to the public, read-only demo database.
+
+[%header,cols="2,2,3"]
 |===
 |Environment variable name
-|Default value (or N/A)
+|Default value
+|Description
 
 |PORT
 |8080
+|Port used by `composer run start`
 
-|NEO4J_URI
-|neo4j+s://demo.neo4jlabs.com
+|CONNECTION_URI
+|neo4j+s://demo.neo4jlabs.com?database=movies
+|Neo4j connection URI
 
-|NEO4J_USER
+|DB_USER
 |movies
+|Neo4j user
 
-|NEO4J_PASSWORD
+|DB_PASSWORD
 |movies
+|Neo4j password
 
-|NEO4J_DATABASE
+|NEO4J_initial_dbms_default__database
 |movies
+|Database used in the default `CONNECTION_URI`. Docker Compose also passes it to Neo4j as the default database.
 |===
 
 To run the database locally as well, start your local Neo4j Server (https://neo4j.com/download[Download & Install]), open Neo4j Browser.
 Then install the Movies data-set with `:play movies`, click the statement, and hit the triangular "Run" button.
 
-Then, override the relevant environment variables above.
+Then, override the relevant environment variables above, for example:
+
+[source,shell]
+----
+CONNECTION_URI=neo4j://localhost DB_USER=neo4j DB_PASSWORD=<your password> composer run start
+----
 
 Another way is just to use docker and run:
 
 `docker compose up --build --wait`
+
+This starts Neo4j with the movies data-set and the application on http://localhost:8080, configured through `.env.example`.

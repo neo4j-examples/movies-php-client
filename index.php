@@ -4,17 +4,24 @@ declare(strict_types=1);
 
 use Laudis\Neo4j\Authentication\Authenticate;
 use Laudis\Neo4j\Basic\Driver;
-use Laudis\Neo4j\Types\ArrayList;
+use Laudis\Neo4j\Types\CypherList;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
 require __DIR__.'/vendor/autoload.php';
 
-$database = $_ENV['NEO4J_initial_dbms_default__database'] ?? 'movies';
-$uri = $_ENV['CONNECTION_URI'] ?? sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database);
-$user = $_ENV['DB_USER'] ?? 'neo4j';
-$password = $_ENV['DB_PASSWORD'] ?? 'testtest';
+function envOrDefault(string $name, string $default): string
+{
+    $value = getenv($name);
+
+    return false === $value || '' === $value ? $default : $value;
+}
+
+$database = envOrDefault('NEO4J_initial_dbms_default__database', 'movies');
+$uri = envOrDefault('CONNECTION_URI', sprintf('neo4j+s://demo.neo4jlabs.com?database=%s', $database));
+$user = envOrDefault('DB_USER', 'movies');
+$password = envOrDefault('DB_PASSWORD', 'movies');
 
 $auth = Authenticate::basic($user, $password);
 $driver = Driver::create($uri, authenticate: $auth);
@@ -25,7 +32,7 @@ $app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, true, true);
 
 $app->get('/', static function (Request $request, Response $response) {
-    $response->getBody()->write(file_get_contents(__DIR__.'/public/index.html'));
+    $response->getBody()->write((string) file_get_contents(__DIR__.'/public/index.html'));
 
     return $response;
 });
@@ -90,8 +97,8 @@ CYPHER
         $movieTitle = $row->getAsString('movie');
         $mappings['Movie:'.$movieTitle] = count($mappings);
         $tbr['nodes'][] = ['title' => $movieTitle, 'label' => 'movie'];
-        /** @var ArrayList<string> $cast */
-        $cast = $row->getAsArrayList('cast');
+        /** @var CypherList<string> $cast */
+        $cast = $row->getAsCypherList('cast');
         foreach ($cast as $person) {
             $number = $mappings['Person:'.$person] ?? null;
             if (null === $number) {
