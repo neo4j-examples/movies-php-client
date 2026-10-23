@@ -11,7 +11,7 @@ jobs:
     name: PHP-CS-Fixer
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - name: PHP-CS-Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Psalm
         uses: docker://ghcr.io/psalm/psalm-github-actions
 
@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Check out project sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           submodules: recursive
 
