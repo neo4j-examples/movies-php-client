@@ -74,16 +74,16 @@
         },
         {
             "name": "laudis/neo4j-php-client",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neo4j-php/neo4j-php-client.git",
-                "reference": "1f566f68067f2f9a9ebeb60d20b12f0a3ca11736"
+                "reference": "d6d90e436689699803ce7132da796dc22f8c39cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/1f566f68067f2f9a9ebeb60d20b12f0a3ca11736",
-                "reference": "1f566f68067f2f9a9ebeb60d20b12f0a3ca11736",
+                "url": "https://api.github.com/repos/neo4j-php/neo4j-php-client/zipball/d6d90e436689699803ce7132da796dc22f8c39cb",
+                "reference": "d6d90e436689699803ce7132da796dc22f8c39cb",
                 "shasum": ""
             },
             "require": {
@@ -155,9 +155,9 @@
             ],
             "support": {
                 "issues": "https://github.com/neo4j-php/neo4j-php-client/issues",
-                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/3.7.0"
+                "source": "https://github.com/neo4j-php/neo4j-php-client/tree/3.7.1"
             },
-            "time": "2026-10-21T16:17:19+00:00"
+            "time": "2026-10-22T07:00:08+00:00"
         },
         {
             "name": "laudis/typed-enum",
@@ -1092,16 +1092,16 @@
         },
         {
             "name": "stefanak-michal/bolt",
-            "version": "v7.5.0",
+            "version": "v7.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stefanak-michal/php-bolt-driver.git",
-                "reference": "ff63a863b8aa53dd983852b56203654e811e44d1"
+                "reference": "020a62700abef131ae44fd0ab3adf624f0549a68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanak-michal/php-bolt-driver/zipball/ff63a863b8aa53dd983852b56203654e811e44d1",
-                "reference": "ff63a863b8aa53dd983852b56203654e811e44d1",
+                "url": "https://api.github.com/repos/stefanak-michal/php-bolt-driver/zipball/020a62700abef131ae44fd0ab3adf624f0549a68",
+                "reference": "020a62700abef131ae44fd0ab3adf624f0549a68",
                 "shasum": ""
             },
             "require": {
@@ -1158,7 +1158,7 @@
                     "type": "ko-fi"
                 }
             ],
-            "time": "2026-10-20T13:34:25+00:00"
+            "time": "2026-10-29T11:03:42+00:00"
         }
     ],
     "packages-dev": [
@@ -4718,5 +4718,5 @@
     "platform-overrides": {
         "php": "8.2.35"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
